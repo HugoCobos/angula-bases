@@ -1,0 +1,34 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <!-- eso que esta en el ngFor es para tener una idea de las cosas que se pueden hace
+        tiene un indice, verifica si son pares o impares, etc
+    -->
+  <li *ngFor="
+    let character of characterList;
+    let i = index;
+    let isFirst = first;
+    let isLast = last;
+    let isEven = even;
+    let isOdd = odd
+  "class="list-group-item d-flex justify-content-between align-items-center"
+
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-primary': isFirst,
+    }"
+    >
+
+    <!-- con el [ngClass="{}"] lo que hace es que se pueden poner estilos css mediante condiciones de js -->
+
+
+    <div>
+      <span class="text-primary" >{{ i + 1 }}.</span>
+      <span>{{ character.name }} - </span>
+      <strong>Power: </strong>
+      <span>{{ character.power }}</span>
+    </div>
+
+  <button class="btn btn-danger" (click)="onDeleteCharacter( character.id)" >X</button>
+
+  </li>
+</ul>
